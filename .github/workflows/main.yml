@@ -63,7 +63,7 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
-  prerelease:
+  pre-release:
     needs: [pre-commit, test]
     if: github.event.inputs.release == 'pre'
     runs-on: ubuntu-latest
