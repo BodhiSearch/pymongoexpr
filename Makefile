@@ -26,7 +26,7 @@ lint: install
 	poetry run pre-commit run --all-files
 
 test: install
-	poetry run pytest --cov=src --cov-report=xml --cov-report=html
+	poetry run pytest --cov-report=xml --cov-report=html
 
 build: clean install
 	poetry build
