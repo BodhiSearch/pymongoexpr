@@ -1,0 +1,35 @@
+repos:
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.5
+    hooks:
+      - id: codespell
+        additional_dependencies:
+          - tomli
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.5.1'
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - 'pydantic'
+        exclude: '(?x)(test\_.*|conftest\.py|docs/conf\.py)'
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.0.291
+    hooks:
+      - id: ruff
+        args: [--config, pyproject.toml]
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        files: ^(.*\/)?src\/.*
+        additional_dependencies:
+          - 'pydocstyle[toml]'
+  - repo: local
+    hooks:
+      - id: check-poetry-lock
+        name: check-poetry-lock
+        description: 'Check poetry.lock file is in sync with pyproject.toml'
+        entry: poetry
+        args: [check, --lock]
+        language: system
+        pass_filenames: false
