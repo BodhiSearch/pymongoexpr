@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pymongoexpr"
-version = "0.1.1"
+version = "0.1.2"
 description = "Simple MongoDB filter expression parsing library"
 authors = ["Amir Nagri <amir.nagri@proton.me>"]
 license = "MIT"
