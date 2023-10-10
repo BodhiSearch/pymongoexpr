@@ -4,6 +4,7 @@ all: help
 
 help:
 	@echo "clean        - remove all build artifacts"
+	@echo "clean_docs   - remove all docs artifacts"
 	@echo "check        - check poetry file for descrepencies, used by CI"
 	@echo "install      - install all python dependencies"
 	@echo "lint         - run all code quality and linting checks"
@@ -14,6 +15,8 @@ help:
 
 clean:
 	rm -rf build dist
+
+clean_docs:
 	$(MAKE) -C docs clean
 
 check:
@@ -31,7 +34,7 @@ test: install
 build: clean install
 	poetry build
 
-docs: clean autodocs
+docs: clean_docs autodocs
 	$(MAKE) -C docs html
 
 autodocs:
